@@ -87,6 +87,7 @@ class WandbLogger(BaseDashboardLogger):
             self.run.finish()
 
     def add_artifact(self, file_or_dir, name, artifact_type, aliases=None):
+        return
         if not self.run:
             return
         name = "_".join([self.run.id, name])
@@ -97,4 +98,4 @@ class WandbLogger(BaseDashboardLogger):
         elif data_path.is_file():
             artifact.add_file(str(data_path))
 
-        self.run.add_artifact(artifact, aliases=aliases)
+        self.run.log_artifact(artifact, aliases=aliases)
